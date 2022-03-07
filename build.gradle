@@ -1,14 +1,8 @@
 buildscript {
     repositories {
-        mavenCentral()
-        mavenLocal()
         maven {
-            name = "forge"
-            url = "http://files.minecraftforge.net/maven"
-        }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+            name = "central"
+            url = "https://maven.thorfusion.com/artifactory/central/"
         }
     }
     dependencies {
@@ -26,7 +20,10 @@ apply plugin: 'maven'
 apply plugin: 'forgedev'
 
 repositories {
-    mavenLocal()
+     maven {
+            name = "central"
+            url = "https://maven.thorfusion.com/artifactory/central/"
+        }
     flatDir {
         name "fileRepo"
         dirs "repo"
@@ -35,7 +32,7 @@ repositories {
 
 minecraft {
     version = '1.7.10'
-    mcpVersion = '9.05'
+    mcpVersion = '9.08'
     fmlDir = projectDir.getAbsolutePath() + "/fml";
     mainClass = 'cpw.mods.fml.relauncher.ServerLaunchWrapper'
     tweakClass = 'cpw.mods.fml.common.launcher.FMLTweaker'
@@ -55,7 +52,7 @@ if (project.hasProperty("crowdinKey"))
 
 
 launch4j {
-    jreMinVersion = '1.6.0'
+    jreMinVersion = '1.8.0'
 }
 
 uploadArchives {
